@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Bootstrap test</title>
+        <script src="/cpresources/887105f9/jquery.js"></script>
+        <script src="/assets/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/assets/bootstrap.css" />
+    <style>
+        .padded{
+            padding:1em;
+        }
+        .carousel-control-prev, .carousel-control-next{
+            background:black !important;
+        }
+        .carousel-indicators button{
+            border: 1px solid black !important;
+            height:1em !important;
+            width:1em !important;
+        }
+        .carousel-indicators .active{
+            background: black !important;
+        }
+    </style>
+    </head>
+<body>
+
+<div class="container" style="margin:auto auto">
+    <h1>Bootstrap 5 Yii2 Tests</h1>
+{#
+echo Dropdown::widget([
+ *             'items' => [
+ *                 ['label' => 'DropdownA', 'url' => '/'],
+ *                 ['label' => 'DropdownB', 'url' => '#'],
+ *             ],
+ *         ]);
+
+#}
+{% set dd1 = {'label': 'DropdownA', 'url':'/'} %}
+{% set dd2 = {'label': 'DropdownB', 'url':'/'} %}
+
+{% set options = {'items': [dd1, dd2]} %}
+
+
+    <div class="padded">Dropdown:</div>
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+        </button>
+    {{ yii2dropdown(options)|raw }}
+    </div>
+
+{#
+    echo Alert::widget([
+    'options' => [
+    'class' => 'alert-info',
+    ],
+    'body' => 'Say hello...',
+    ]);
+#}
+    <div class="padded">Alert:</div>
+
+    {% set alert_options = {'options': {'class': 'alert-info'}, 'body': 'hmm'} %}
+
+    {{  yii2alert(alert_options)|raw }}
+
+    {#
+
+    * echo Button::widget([
+*     'label' => 'Action',
+*     'options' => ['class' => 'btn-lg'],
+* ]);
+    #}
+    <div class="padded">Button:</div>
+
+    {% set button_options = {'options': {'class': 'btn-primary btn-lg'}, 'label': 'Action'} %}
+    {{  yii2button(button_options)|raw }}
+
+{#
+/assets/Untitled.png
+
+ * ```php
+ * echo Carousel::widget([
+ *     'items' => [
+ *         // the item contains only the image
+ *         '<img src="http://twitter.github.io/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg"/>',
+ *         // equivalent to the above
+ *         ['content' => '<img src="http://twitter.github.io/bootstrap/assets/img/bootstrap-mdo-sfmoma-02.jpg"/>'],
+ *         // the item contains both the image and the caption
+ *         [
+ *             'content' => '<img src="http://twitter.github.io/bootstrap/assets/img/bootstrap-mdo-sfmoma-03.jpg"/>',
+ *             'caption' => '<h4>This is title</h4><p>This is the caption text</p>',
+ *             'captionOptions' => ['class' => ['d-none', 'd-md-block']]
+ *             'options' => [...],
+ *         ],
+ *     ]
+ * ]);
+ * ```
+#}
+
+{% set c_item1 = {'content': '<img src="/assets/Untitled.png"/>',
+                'caption': '<h4>This is the title</h4><p>the caption</p>',
+                'captionOptions': {'class': 'd-none d-md-block'}}
+%}
+{% set c_item2 = {'content': '<img src="/assets/Untitled.png"/>',
+    'caption': '<h4>This is the title</h4><p>the caption</p>',
+    'captionOptions': {'class': 'd-none d-md-block'}}
+%}
+{#
+{% set items = {'items': ['<img src="/assets/Untitled.png"/>','<img src="/assets/Untitled.png"/>']} %}
+#}
+
+{% set items = {'items': [c_item1, c_item2]} %}
+
+    <div class="padded">Carousel:</div>
+
+{{ yii2carousel(items) | raw }}
+
+</div>
+</body>
+</html>
