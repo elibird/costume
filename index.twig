@@ -26,8 +26,8 @@
     </head>
 <body>
 
-<div class="container" style="margin:auto auto">
-    <h1>Bootstrap 5 Yii2 Tests</h1>
+    <div class="container" style="margin:auto auto">
+        <h1>Bootstrap 5 Yii2 Tests</h1>
 {#
 echo Dropdown::widget([
  *             'items' => [
@@ -112,12 +112,68 @@ echo Dropdown::widget([
 {% set items = {'items': ['<img src="/assets/Untitled.png"/>','<img src="/assets/Untitled.png"/>']} %}
 #}
 
-{% set items = {'items': [c_item1, c_item2]} %}
+        {% set items = {'items': [c_item1, c_item2]} %}
 
-    <div class="padded">Carousel:</div>
+        <div class="padded">Carousel:</div>
 
-{{ yii2carousel(items) | raw }}
+        {{ yii2carousel(items) | raw }}
 
-</div>
+
+        <div class="padded">Nav:</div>
+{#
+        /**
+        * Nav renders a nav HTML component.
+        *
+        * For example:
+        *
+        * ```php
+        * echo Nav::widget([
+        *     'items' => [
+        *         [
+        *             'label' => 'Home',
+        *             'url' => ['site/index'],
+        *             'linkOptions' => [...],
+        *         ],
+        *         [
+        *             'label' => 'Dropdown',
+        *             'items' => [
+        *                  ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+        *                  '<div class="dropdown-divider"></div>',
+        *                  '<div class="dropdown-header">Dropdown Header</div>',
+        *                  ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+        *             ],
+        *         ],
+        *         [
+        *             'label' => 'Login',
+        *             'url' => ['site/login'],
+        *             'visible' => Yii::$app->user->isGuest
+        *         ],
+        *     ],
+        *     'options' => ['class' =>'nav-pills'], // set this to nav-tabs to get tab-styled navigation
+        * ]);
+        * ```
+        *
+        * Note: Multilevel dropdowns beyond Level 1 are not supported in Bootstrap 5.
+        *
+        * @see https://getbootstrap.com/docs/5.1/components/navs/
+        * @see https://getbootstrap.com/docs/5.1/components/dropdowns/
+        *
+        * @author Antonio Ramirez <amigo.cobos@gmail.com>
+        */
+#}
+        {% set nav_item1 = {'label': 'Link 1',
+            'url': ['https://slashdot.org'],
+            'linkOptions': []}
+        %}
+        {% set nav_item2 = {'label': 'Link 2',
+            'url': ['https://google.com'],
+            'linkOptions': []}
+        %}
+
+        {% set navItems = {'items': [nav_item1, nav_item2]} %}
+
+        {{ yii2nav(navItems) | raw }}
+
+    </div>
 </body>
 </html>
